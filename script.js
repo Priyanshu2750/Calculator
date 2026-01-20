@@ -30,6 +30,10 @@ function operate(num1, num2, operator) {
   return result;
 }
 
+function roundResult(result) {
+  return Math.round(result * 1e8) / 1e8;
+}
+
 const display = document.querySelector(".display");
 
 let currentVal = "";
@@ -51,6 +55,7 @@ for (const operator of operators) {
     if (currentVal !== "" && firstVal !== undefined && op !== undefined) {
       secondVal = +currentVal;
       firstVal = operate(firstVal, secondVal, op);
+      firstVal = roundResult(firstVal);
       display.textContent = firstVal;
     } else if (currentVal !== "") {
       firstVal = +currentVal;
@@ -72,6 +77,7 @@ equal.addEventListener("click", () => {
     return;
   }
   let result = operate(firstVal, secondVal, op);
+  result = roundResult(result);
   display.textContent = result;
   firstVal = result;
   currentVal = "";
