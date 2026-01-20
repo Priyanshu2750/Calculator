@@ -63,3 +63,12 @@ equal.addEventListener("click", () => {
   firstVal = result;
   currentVal = "";
 });
+
+const clear = document.querySelector(".clear");
+clear.addEventListener("click", () => {
+  display.textContent = "0";
+  currentVal = "";
+  firstVal = undefined;
+  secondVal = undefined;
+  op = undefined;
+});
