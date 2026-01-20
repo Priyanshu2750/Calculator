@@ -47,10 +47,15 @@ for (const digit of digits) {
 const operators = document.querySelectorAll(".operator");
 for (const operator of operators) {
   operator.addEventListener("click", () => {
-    op = operator.querySelector("button").textContent;
-    if (currentVal !== "") {
+    const newOp = operator.querySelector("button").textContent;
+    if (currentVal !== "" && firstVal !== undefined && op !== undefined) {
+      secondVal = +currentVal;
+      firstVal = operate(firstVal, secondVal, op);
+      display.textContent = firstVal;
+    } else if (currentVal !== "") {
       firstVal = +currentVal;
     }
+    op = newOp;
     currentVal = "";
   });
 }
@@ -64,6 +69,7 @@ equal.addEventListener("click", () => {
     firstVal = undefined;
     secondVal = undefined;
     op = undefined;
+    return;
   }
   let result = operate(firstVal, secondVal, op);
   display.textContent = result;
