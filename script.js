@@ -55,7 +55,9 @@ function operate() {
 
 const display = document.querySelector(".display");
 
-let currentVal = "";
+let currentVal = "",
+  op;
+let firstVal, secondVal;
 
 const digits = document.querySelectorAll(".digit");
 for (const digit of digits) {
@@ -63,5 +65,14 @@ for (const digit of digits) {
     const value = digit.querySelector("button").textContent;
     currentVal += value;
     display.textContent = currentVal;
+  });
+}
+
+const operators = document.querySelectorAll(".operator");
+for (const operator of operators) {
+  operator.addEventListener("click", () => {
+    op = operator.querySelector("button").textContent;
+    firstVal = +currentVal;
+    currentVal = "";
   });
 }
