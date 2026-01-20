@@ -52,3 +52,16 @@ function operate() {
 
   console.log(result);
 }
+
+const display = document.querySelector(".display");
+
+let currentVal = "";
+
+const digits = document.querySelectorAll(".digit");
+for (const digit of digits) {
+  digit.addEventListener("click", () => {
+    const value = digit.querySelector("button").textContent;
+    currentVal += value;
+    display.textContent = currentVal;
+  });
+}
