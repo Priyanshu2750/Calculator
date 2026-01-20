@@ -14,30 +14,7 @@ function divide(a, b) {
   return a / b;
 }
 
-function operate() {
-  let num1 = +prompt("Enter a number", "");
-  if (isNaN(num1) === true) {
-    alert("Enter a number!");
-    return;
-  }
-
-  let operator = prompt("Enter an operator", "");
-  if (
-    operator !== "+" &&
-    operator !== "-" &&
-    operator !== "*" &&
-    operator !== "/"
-  ) {
-    alert("Enter a valid operator!");
-    return;
-  }
-
-  let num2 = +prompt("Enter another number", "");
-  if (isNaN(num2) === true) {
-    alert("Enter a number!");
-    return;
-  }
-
+function operate(num1, num2, operator) {
   let result;
 
   if (operator === "+") {
@@ -50,14 +27,13 @@ function operate() {
     result = divide(num1, num2);
   }
 
-  console.log(result);
+  return result;
 }
 
 const display = document.querySelector(".display");
 
-let currentVal = "",
-  op;
-let firstVal, secondVal;
+let currentVal = "";
+let firstVal, secondVal, op;
 
 const digits = document.querySelectorAll(".digit");
 for (const digit of digits) {
@@ -72,7 +48,18 @@ const operators = document.querySelectorAll(".operator");
 for (const operator of operators) {
   operator.addEventListener("click", () => {
     op = operator.querySelector("button").textContent;
-    firstVal = +currentVal;
+    if (currentVal !== "") {
+      firstVal = +currentVal;
+    }
     currentVal = "";
   });
 }
+
+const equal = document.querySelector(".equal-to");
+equal.addEventListener("click", () => {
+  secondVal = +currentVal;
+  let result = operate(firstVal, secondVal, op);
+  display.textContent = result;
+  firstVal = result;
+  currentVal = "";
+});
