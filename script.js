@@ -58,6 +58,13 @@ for (const operator of operators) {
 const equal = document.querySelector(".equal-to");
 equal.addEventListener("click", () => {
   secondVal = +currentVal;
+  if (op === "/" && secondVal === 0) {
+    display.textContent = "Cannot divide by 0";
+    currentVal = "";
+    firstVal = undefined;
+    secondVal = undefined;
+    op = undefined;
+  }
   let result = operate(firstVal, secondVal, op);
   display.textContent = result;
   firstVal = result;
