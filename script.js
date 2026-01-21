@@ -113,3 +113,71 @@ backspace.addEventListener("click", () => {
     display.textContent = currentVal;
   }
 });
+
+document.addEventListener("keydown", (event) => {
+  const key = event.key;
+  switch (key) {
+    case "0":
+      document.querySelector("#zero button").click();
+      break;
+    case "1":
+      document.querySelector("#one button").click();
+      break;
+    case "2":
+      document.querySelector("#two button").click();
+      break;
+    case "3":
+      document.querySelector("#three button").click();
+      break;
+    case "4":
+      document.querySelector("#four button").click();
+      break;
+    case "5":
+      document.querySelector("#five button").click();
+      break;
+    case "6":
+      document.querySelector("#six button").click();
+      break;
+    case "7":
+      document.querySelector("#seven button").click();
+      break;
+    case "8":
+      document.querySelector("#eight button").click();
+      break;
+    case "9":
+      document.querySelector("#nine button").click();
+      break;
+
+    case "+":
+      document.querySelector("#plus button").click();
+      break;
+    case "-":
+      document.querySelector("#minus button").click();
+      break;
+    case "*":
+      document.querySelector("#multiply button").click();
+      break;
+    case "/":
+      document.querySelector("#divide button").click();
+      break;
+
+    case "Enter":
+      event.preventDefault();
+      document.querySelector(".equal-to button").click();
+      break;
+
+    case "Backspace":
+      event.preventDefault();
+      document.querySelector(".backspace button").click();
+      break;
+
+    case "Escape":
+      event.preventDefault();
+      document.querySelector(".clear button").click();
+      break;
+
+    case ".":
+      document.querySelector(".decimal button").click();
+      break;
+  }
+});
