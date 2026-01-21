@@ -91,3 +91,15 @@ clear.addEventListener("click", () => {
   secondVal = undefined;
   op = undefined;
 });
+
+const decimal = document.querySelector(".decimal");
+decimal.addEventListener("click", () => {
+  if (!currentVal.includes(decimal.querySelector("button").textContent)) {
+    if (currentVal === "") {
+      currentVal += "0";
+      display.textContent = currentVal;
+    }
+    currentVal += decimal.querySelector("button").textContent;
+    display.textContent = currentVal;
+  }
+});
