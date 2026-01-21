@@ -103,3 +103,13 @@ decimal.addEventListener("click", () => {
     display.textContent = currentVal;
   }
 });
+
+const backspace = document.querySelector(".backspace");
+backspace.addEventListener("click", () => {
+  currentVal = currentVal.slice(0, -1);
+  if (currentVal === "") {
+    display.textContent = "0";
+  } else {
+    display.textContent = currentVal;
+  }
+});
